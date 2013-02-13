@@ -68,6 +68,17 @@ Or take the Markdown and convert it to your format of choice
 
 ---
 
+# Committing
+
+* commit often
+* discrete changes
+* useful commit messages
+    - First line: 50 chars max; succinct
+    - Second line: blank
+    - Third line+: description of commit if necessary; try to wrap to 72 chars
+
+---
+
 # Branching
 
 * branch often
@@ -90,6 +101,20 @@ Open a pull request when:
 ---
 
 # Issues
+
+* bug/feature tracking
+* can be closed though commits
+* can be linked to in pull requests
+* can be viewed for all projects at once
+
+---
+
+# Wiki
+
+* not so great
+* per project
+* weirdly hidden
+* let's stick to READMEs and solid code commenting
 
 ---
 
