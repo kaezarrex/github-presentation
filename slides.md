@@ -1,4 +1,4 @@
-# GitHub
+#![](http://upload.wikimedia.org/wikipedia/commons/b/b3/GitHub.svg)
 
 ---
 
@@ -14,7 +14,6 @@ Then run make
 
 Or take the Markdown and convert it to your format of choice
 
-
 ---
 
 # Git + Hub = GitHub
@@ -28,3 +27,73 @@ Or take the Markdown and convert it to your format of choice
 
 * Snazzy web interface on top of Git
 * Additional features for maximum productivity
+
+---
+
+# What can't you do with GitHub?
+
+* most merges
+    - fast forward
+    - three-way with conflicts
+    - octopus
+* rebase
+* cherry-pick
+* tag(?)
+* client-side hooks
+* plumbing and porcelain
+
+---
+
+# Git ∩ GitHub
+
+* init
+* clone (fork)
+* commit
+* create/delete branches
+* merge no-conflict branches
+* hooks
+
+---
+
+# The extra stuff
+
+* [pull requests](https://help.github.com/articles/using-pull-requests)
+* [issues](https://github.com/blog/831-issues-2-0-the-next-generation)
+* [wiki](https://github.com/blog/774-git-powered-wikis-improved)
+* [network graph](https://github.com/blog/39-say-hello-to-the-network-graph-visualizer)
+* [server-side hooks](https://help.github.com/articles/post-receive-hooks)
+* [pages](http://pages.github.com/)
+* [gist](https://gist.github.com/)
+* [status.github.com](https://status.github.com/)
+
+---
+
+# Branching
+
+* branch often
+* no extra cost
+* always test before pushing to `master` on GitHub
+
+---
+
+# Pull Requests...
+
+## ...are awesome!
+
+Open a pull request when:
+
+* you want feedback from others
+* you are merging a long branch
+* you are merging a short branch
+* you are working on a branch that you someday want to merge, but aren't ready yet, but maybe want to have some discussion about it or at least have a record of the fact that you are going to merge someday
+
+---
+
+# Issues
+
+---
+
+# Beware
+
+* rebasing a branch on GitHub
+
