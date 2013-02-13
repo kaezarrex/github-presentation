@@ -12,7 +12,7 @@ Then run make
 
     make build
 
-Or take the Markdown and convert it to your format(s) of choice
+Or take the Markdown and convert it to any of your format(s) of choice
 
 ---
 
