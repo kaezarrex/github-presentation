@@ -25,19 +25,46 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>GitHub</title>
+    <title>{{ head_title }}</title>
     <!-- Styles -->
-    
-    <link rel="stylesheet" media="print" href="theme/css/print.css">
-    <link rel="stylesheet" media="screen, projection" href="theme/css/screen.css">
-    
-    
+    {% if embed %}
+    <style type="text/css" media="print">
+      {{ css.print.contents }}
+    </style>
+    <style type="text/css" media="screen, projection">
+      {{ css.screen.contents }}
+    </style>
+    {% else %}
+    <link rel="stylesheet" media="print" href="{{ css.print.path_url }}">
+    <link rel="stylesheet" media="screen, projection" href="{{ css.screen.path_url }}">
+    {% endif %}
+    {% for css in user_css %}
+      {% if embed %}
+      <style type="text/css" media="screen, projection">
+        {{ css.contents }}
+      </style>
+      {% else %}
+      <link rel="stylesheet" href="{{ css.path_url }}">
+      {% endif %}
+    {% endfor %}
     <!-- /Styles -->
     <!-- Javascripts -->
-    
-    <script type="text/javascript" src="theme/js/slides.js"></script>
-    
-    
+    {% if embed %}
+    <script>
+      {{ js.contents }}
+    </script>
+    {% else %}
+    <script type="text/javascript" src="{{ js.path_url }}"></script>
+    {% endif %}
+    {% for js in user_js %}
+      {% if embed %}
+      <script>
+        {{ js.contents }}
+      </script>
+      {% else %}
+      <script type="text/javascript" src="{{ js.path_url }}"></script>
+      {% endif %}
+    {% endfor %}
     <!-- /Javascripts -->
 </head>
 <body>
@@ -47,88 +74,63 @@
       <div id="presenter_note"></div>
     </div>
     <div class="slides">
-      
-      <!-- slide source: slides.md -->
+      {% for slide in slides %}
+      <!-- slide source: {% if slide.source %}{{ slide.source.rel_path }}{% endif %} -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide{% if slide.classes %}{% for class in slide.classes %} {{ class }}{% endfor %}{% endif %}">
           <div class="inner">
-            
-            <header><h1>GitHub</h1></header>
-            
-            
+            {% if slide.header %}
+            <header>{{ slide.header }}</header>
+            {% endif %}
+            {% if slide.content %}
+            <section>{{ slide.content }}</section>
+            {% endif %}
           </div>
           <div class="presenter_notes">
             <header><h1>Presenter Notes</h1></header>
             <section>
-            
+            {% if slide.presenter_notes %}
+              {{ slide.presenter_notes }}
+            {% endif %}
             </section>
           </div>
           <footer>
-            
+            {% if slide.source %}
             <aside class="source">
-              Source: <a href="slides.md">slides.md</a>
+              Source: <a href="{{ slide.source.rel_path }}">{{ slide.source.rel_path }}</a>
             </aside>
-            
+            {% endif %}
             <aside class="page_number">
-              1/2
+              {{ slide.number }}/{{ num_slides }}
             </aside>
           </footer>
         </div>
       </div>
-      
-      <!-- slide source: slides.md -->
-      <div class="slide-wrapper">
-        <div class="slide">
-          <div class="inner">
-            
-            <header><h1>Git + Hub = GitHub</h1></header>
-            
-            
-            <section><p>GitHub is Git at it's core</p></section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="slides.md">slides.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              2/2
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
+      {% endfor %}
     </div>
   </div>
-  
+  {% if toc %}
   <div id="toc" class="sidebar hidden">
     <h2>Table of Contents</h2>
     <table>
       <caption>Table of Contents</caption>
-      
-      <tr id="toc-row-1">
-        <th><a href="#slide1">GitHub</a></th>
-        <td><a href="#slide1">1</a></td>
+      {% for section in toc %}
+      <tr id="toc-row-{{ section.number }}">
+        <th><a href="#slide{{ section.number }}">{{ section.title }}</a></th>
+        <td><a href="#slide{{ section.number }}">{{ section.number }}</a></td>
       </tr>
-      
-      
-      <tr id="toc-row-2">
-        <th><a href="#slide2">Git + Hub = GitHub</a></th>
-        <td><a href="#slide2">2</a></td>
-      </tr>
-      
-      
+      {% if section.sub %}
+        {% for subsection in section.sub %}
+        <tr id="toc-row-{{ subsection.number }}" class="sub">
+          <th><a href="#slide{{ subsection.number }}">{{ subsection.title }}</a></th>
+          <td><a href="#slide{{ subsection.number }}">{{ subsection.number }}</a></td>
+        </tr>
+        {% endfor %}
+      {% endif %}
+      {% endfor %}
     </table>
   </div>
-  
+  {% endif %}
   <div id="help" class="sidebar hidden">
     <h2>Help</h2>
     <table>
