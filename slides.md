@@ -98,9 +98,13 @@ Open a pull request when:
 * you are merging a short branch
 * you are working on a branch that you someday want to merge, but aren't ready yet, but maybe want to have some discussion about it or at least have a record of the fact that you are going to merge someday
 
+When merging a pull request, add the names of other reviewers to the comments.
+
 ---
 
 # Issues
+
+Issues should warrant code changes.
 
 * bug/feature tracking
 * can be closed though commits
